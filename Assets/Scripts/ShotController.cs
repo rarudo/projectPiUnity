@@ -1,0 +1,55 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.UI;
+
+
+public class ShotController : MonoBehaviour
+{
+    public int speed;
+    private Scanner scanner;
+    private GameObject refObj;
+    private Text datText;
+
+	// Use this for initialization
+	void Start ()
+	{
+	    speed = 10;
+        scanner = GetComponent<Scanner>();
+	    refObj = GameObject.Find("DateText");
+	    datText = refObj.GetComponent<Text>();
+
+
+	    StartCoroutine(Loop());
+	}
+
+    private IEnumerator Loop()
+    {
+        while (true)
+        {
+            for(int i = 0; i < speed; i++)
+                StartCoroutine(StartShot());
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+
+    private IEnumerator StartShot()
+    {
+	    Vector2 vec2;
+	    while (shotQue.fechAll())
+	    {
+	        vec2.x = shotQue.x;
+	        vec2.y = shotQue.y;
+	        scanner.Shot(vec2);
+	        datText.text = shotQue.date;
+	        yield break;
+	    }
+    }
+	
+	// Update is called once per frame
+	void Update ()
+	{
+	}
+}
