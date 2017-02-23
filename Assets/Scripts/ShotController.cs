@@ -10,16 +10,21 @@ public class ShotController : MonoBehaviour
 {
     public int speed;
     private Scanner scanner;
-    private GameObject refObj;
     private Text datText;
+    private Slider shotSpeedSlider;
 
 	// Use this for initialization
 	void Start ()
 	{
-	    speed = 10;
         scanner = GetComponent<Scanner>();
-	    refObj = GameObject.Find("DateText");
-	    datText = refObj.GetComponent<Text>();
+        GameObject dataObj,sliderObj;
+
+	    dataObj = GameObject.Find("DateText");
+	    sliderObj = GameObject.Find("ShotSpeedSlider");
+
+	    datText = dataObj.GetComponent<Text>();
+	    shotSpeedSlider = sliderObj.GetComponent<Slider>();
+	    speed = (int) shotSpeedSlider.value;
 
 
 	    StartCoroutine(Loop());
@@ -51,5 +56,6 @@ public class ShotController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+	    speed = (int) shotSpeedSlider.value;
 	}
 }

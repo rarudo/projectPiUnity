@@ -19,11 +19,11 @@ public class JsonParser : MonoBehaviour {
     IEnumerator setQues()
     {
         //すでにqueが溜まってたらスキップ
-        if (shotQue.left > 10000)
+        if (shotQue.left > 20000)
             yield break;
         // サーバからJSON文字列取得
         long lastId = shotQue.getLastId();
-        WWW www = new WWW ("http://0.0.0.0:3000/getTask?limit=200&start="+lastId);
+        WWW www = new WWW ("http://0.0.0.0:3000/getTask?limit=500&start="+lastId);
         yield return www;
         // クラスにデータを取得
         // JSONデータは最初は配列から始まるので、Deserialize（デコード）した直後にリストへキャスト
