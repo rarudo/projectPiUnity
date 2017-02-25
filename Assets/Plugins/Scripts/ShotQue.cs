@@ -12,6 +12,7 @@ public static class shotQue
     public static float x;
     public static float y;
     public static string date;
+    public static long port;
 
     private static List<Dictionary<string,object>> queList;
 
@@ -21,14 +22,15 @@ public static class shotQue
         queList = new List<Dictionary<string, object>>();
     }
 
-    public static void AddQue(long id, float x, float y, string date)
+    public static void AddQue(long id, float x, float y, string date, long port)
     {
         Dictionary<string,object> dict = new Dictionary<string, object>()
         {
             {"id", id},
             {"x", x},
             {"y", y},
-            {"date", date}
+            {"date", date},
+            {"port", port}
         };
         queList.Add(dict);
         setLeft();
@@ -49,6 +51,7 @@ public static class shotQue
         y = (float) dict["y"];
         id = (long) dict["id"];
         date = (string) dict["date"];
+        port = (long) dict["port"];
     }
 
     public static bool fechAll()

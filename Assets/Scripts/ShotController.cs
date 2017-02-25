@@ -49,6 +49,7 @@ public class ShotController : MonoBehaviour
 	        vec2.y = shotQue.y;
 	        scanner.Shot(vec2);
 	        datText.text = shotQue.date;
+	        print("port" + shotQue.port);
 	        yield break;
 	    }
     }

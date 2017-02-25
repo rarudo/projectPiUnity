@@ -32,12 +32,13 @@ public class JsonParser : MonoBehaviour {
         foreach(IDictionary person in dataList)
         {
             long id = (long)person["id"];
+            long port = (long) person["port"];
             string strX= (string)person["x"];
             string strY= (string)person["y"];
             string date= (string)person["date"];
             float x = float.Parse(strX);
             float y = float.Parse(strY);
-            shotQue.AddQue(id,x,y,date);
+            shotQue.AddQue(id,x,y,date,port);
         }
     }
 }
