@@ -12,6 +12,7 @@ public class ShotController : MonoBehaviour
     private Scanner scanner;
     private Text datText;
     private Slider shotSpeedSlider;
+    private PortCubeController _portCubeController;
 
 	// Use this for initialization
 	void Start ()
@@ -22,6 +23,7 @@ public class ShotController : MonoBehaviour
 	    dataObj = GameObject.Find("DateText");
 	    sliderObj = GameObject.Find("ShotSpeedSlider");
 
+	    _portCubeController = GameObject.Find("PortCubes").GetComponent<PortCubeController>();
 	    datText = dataObj.GetComponent<Text>();
 	    shotSpeedSlider = sliderObj.GetComponent<Slider>();
 	    speed = (int) shotSpeedSlider.value;
@@ -48,8 +50,8 @@ public class ShotController : MonoBehaviour
 	        vec2.x = shotQue.x;
 	        vec2.y = shotQue.y;
 	        scanner.Shot(vec2);
+	        _portCubeController.Emmission(shotQue.port);
 	        datText.text = shotQue.date;
-	        print("port" + shotQue.port);
 	        yield break;
 	    }
     }
