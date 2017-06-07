@@ -8,11 +8,11 @@ using UnityEngine.UI;
 
 public class ShotController : MonoBehaviour
 {
-    public int speed;
+    public int speed = 20;
     private Scanner scanner;
     private Text datText;
     private Slider shotSpeedSlider;
-    private PortCubeController _portCubeController;
+	private ShotQue _shotQue;
 
 	// Use this for initialization
 	void Start ()
@@ -20,10 +20,11 @@ public class ShotController : MonoBehaviour
         scanner = GetComponent<Scanner>();
         GameObject dataObj,sliderObj;
 
+        _shotQue = GameObject.Find("Systems").GetComponent<ShotQue>();
 	    dataObj = GameObject.Find("DateText");
 	    sliderObj = GameObject.Find("ShotSpeedSlider");
 
-	    _portCubeController = GameObject.Find("PortCubes").GetComponent<PortCubeController>();
+	    //_portCubeController = GameObject.Find("PortCubes").GetComponent<PortCubeController>();
 	    datText = dataObj.GetComponent<Text>();
 	    shotSpeedSlider = sliderObj.GetComponent<Slider>();
 	    speed = (int) shotSpeedSlider.value;
@@ -36,8 +37,7 @@ public class ShotController : MonoBehaviour
     {
         while (true)
         {
-            for(int i = 0; i < speed; i++)
-                StartCoroutine(StartShot());
+            StartCoroutine(StartShot());
             yield return new WaitForSeconds(0.01f);
         }
     }
@@ -45,13 +45,14 @@ public class ShotController : MonoBehaviour
     private IEnumerator StartShot()
     {
 	    Vector2 vec2;
-	    while (shotQue.fechAll())
+	    print(_shotQue.left);
+	    while (_shotQue.fechAll())
 	    {
-	        vec2.x = shotQue.x;
-	        vec2.y = shotQue.y;
+	        vec2.x = _shotQue.x;
+	        vec2.y = _shotQue.y;
 	        scanner.Shot(vec2);
-	        _portCubeController.Emmission(shotQue.port);
-	        datText.text = shotQue.date;
+	       // _portCubeController.Emmission(_shotQue.port);
+	        datText.text = _shotQue.date;
 	        yield break;
 	    }
     }
@@ -59,6 +60,6 @@ public class ShotController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-	    speed = (int) shotSpeedSlider.value;
+	   // speed = (int) shotSpeedSlider.value;
 	}
 }
