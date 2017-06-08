@@ -14,7 +14,7 @@ public class ShotQue : MonoBehaviour
     public String country;
     public string date;
     public long port;
-    public int x, y;
+    public float x, y;
 
     public List<IList> queList;
 
@@ -47,6 +47,8 @@ public class ShotQue : MonoBehaviour
             country = (string) parser["country"];
             /*
             Vector2 xy = getPosition("America");
+            
+            ここにxとy代入しとけば、勝手に発射される
             x = xy.x
             y = xy.y
             */
