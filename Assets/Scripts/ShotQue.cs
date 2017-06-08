@@ -32,7 +32,10 @@ public class ShotQue : MonoBehaviour
 
     public bool fechAll()
     {
-        left = queList.Count;
+        
+        // left = queList.Count;
+        //デバッグ用
+        left = 1;
         if (left == 0)
             return false;
         setParams();
@@ -41,19 +44,23 @@ public class ShotQue : MonoBehaviour
 
     public void setParams()
     {
-        foreach (IDictionary parser in queList[0])
-        {
-            //受け取ったjsonから国を抽出する
-            country = (string) parser["country"];
-            /*
-            Vector2 xy = getPosition("America");
-            
-            ここにxとy代入しとけば、勝手に発射される
-            x = xy.x
-            y = xy.y
-            */
-        }
-        queList.RemoveAt(0);
+        //　デバッグ用
+        x = 0;
+        y = 0;
+        
+       // foreach (IDictionary parser in queList[0])
+       // {
+       //     //受け取ったjsonから国を抽出する
+       //     country = (string) parser["country"];
+       //     /*
+       //     Vector2 xy = getPosition("America");
+       //     
+       //     ここにxとy代入しとけば、勝手に発射される
+       //     x = xy.x
+       //     y = xy.y
+       //     */
+       // }
+       // queList.RemoveAt(0);
     }
 }
 
