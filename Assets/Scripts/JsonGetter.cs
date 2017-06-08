@@ -19,7 +19,6 @@ public class JsonGetter : MonoBehaviour
         }
     }
 
-
     IEnumerator setQues()
     {
         //すでにqueが溜まってたらスキップ
@@ -33,7 +32,4 @@ public class JsonGetter : MonoBehaviour
         IList dataList= (IList)Json.Deserialize(www.text);
         _shotQue.AddQue(dataList);
     }
-    
-
-
 }

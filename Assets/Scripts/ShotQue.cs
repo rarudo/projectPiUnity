@@ -11,8 +11,7 @@ public class ShotQue : MonoBehaviour
     public int left;
 
     public long id;
-    public float x;
-    public float y;
+    public String country;
     public string date;
     public long port;
 
@@ -43,12 +42,9 @@ public class ShotQue : MonoBehaviour
     {
         foreach (IDictionary parser in queList[0])
         {
-            x = float.Parse((string) parser["x"]);
-            y = float.Parse((string) parser["y"]);
-
+            country = (string) parser["country"];
         }
         queList.RemoveAt(0);
     }
-
 }
 
