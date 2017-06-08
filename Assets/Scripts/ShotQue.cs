@@ -14,6 +14,7 @@ public class ShotQue : MonoBehaviour
     public String country;
     public string date;
     public long port;
+    public int x, y;
 
     public List<IList> queList;
 
@@ -42,7 +43,13 @@ public class ShotQue : MonoBehaviour
     {
         foreach (IDictionary parser in queList[0])
         {
+            //受け取ったjsonから国を抽出する
             country = (string) parser["country"];
+            /*
+            Vector2 xy = getPosition("America");
+            x = xy.x
+            y = xy.y
+            */
         }
         queList.RemoveAt(0);
     }
