@@ -15,52 +15,63 @@ public class ShotQue : MonoBehaviour
     public string date;
     public long port;
     public float x, y;
+    
+    //これが核となる変数
+    //que.x que.yに発車する座標が入ってる
+    public List<Vector2> que;
 
-    public List<IList> queList;
+    //1カプセルの中に、50個のqueが入ってる
+    public List<IList> capsuleQue;
 
     void Start(){
         //初期化
         left = 0;
-        queList = new List<IList>();
+        capsuleQue = new List<IList>();
+        StartCoroutine("setQue");
     }
 
-    public void AddQue(IList parsedJson)
+    public void setJson(IList parsedJson)
     {
-        queList.Add(parsedJson);
+        capsuleQue.Add(parsedJson);
     }
 
-
-    public bool fechAll()
+    public List<Vector2> getQue()
     {
-        
-        // left = queList.Count;
-        //デバッグ用
-        left = 1;
-        if (left == 0)
-            return false;
-        setParams();
-        return true;
+        int i = que.Count;
+        //50個ずつ取得する
+        if (i > 50)
+        {
+            i = 50;
+        }
+        List<Vector2> returnQue = que.GetRange(0, i);
+        que.RemoveRange(0,i);
+        return returnQue;
     }
 
-    public void setParams()
+    //capsuleQueから取り出して、queに格納するメソッド
+    public IEnumerator setQue()
     {
-        //　デバッグ用
-        x = 0;
-        y = 0;
-        
-       // foreach (IDictionary parser in queList[0])
-       // {
-       //     //受け取ったjsonから国を抽出する
-       //     country = (string) parser["country"];
-       //     /*
-       //     Vector2 xy = getPosition("America");
-       //     
-       //     ここにxとy代入しとけば、勝手に発射される
-       //     x = xy.x
-       //     y = xy.y
-       //     */
-       // }
-       // queList.RemoveAt(0);
+        while (true)
+        {
+            //1フレームごとにループする
+            yield return new WaitForEndOfFrame();
+            
+            if (capsuleQue.Count != 0)
+            {
+                foreach (IDictionary parser in capsuleQue[0])
+                {
+                    //受け取ったjsonから国を抽出する
+                    country = (string) parser["country"];
+                    /*
+                    薩摩画像になるようてい
+                    Vector2 xy = getPosition("America");
+                    */
+                    Vector2 xy = new Vector2(1,2);
+                    que.Add(xy);
+                }
+                capsuleQue.RemoveAt(0);
+            }
+        }
     }
 }
 

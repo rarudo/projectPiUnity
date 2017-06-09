@@ -29,7 +29,10 @@ public class JsonGetter : MonoBehaviour
         yield return www;
         // クラスにデータを取得
         // JSONデータは最初は配列から始まるので、Deserialize（デコード）した直後にリストへキャスト
-        IList dataList= (IList)Json.Deserialize(www.text);
-        _shotQue.AddQue(dataList);
+        if(www.text.Length != 0)
+        {
+            IList dataList= (IList)Json.Deserialize(www.text);
+            _shotQue.setJson(dataList);
+        }
     }
 }
