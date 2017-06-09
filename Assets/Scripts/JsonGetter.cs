@@ -39,8 +39,8 @@ public class JsonGetter : MonoBehaviour
         //以下デバッグ用！
         int rand = Random.Range(1, 20);
         //テスト用のjsonを作成
-      ////  string json = "{\"country\":\"America\",\"ip\":\"192.168.10." + rand + "\"}";
-        string json = "[{\"country\":\"England\",\"ip\":\"127.0.1.1\"}]";
+        //  string json = "{\"country\":\"America\",\"ip\":\"192.168.10." + rand + "\"}";
+        string json = "[{\"country\":\"Russia\",\"ip\":\"192.168.10."+rand+"\"}]";
         print(json);
         IList dataList= (IList)Json.Deserialize(json);
         _shotQue.addJson(dataList);
