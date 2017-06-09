@@ -12,7 +12,7 @@ public class ShotQue : MonoBehaviour
     public int left;
 
     public long id;
-    public String country;
+    public String country,ip;
     public string date;
     public long port;
     public float x, y;
@@ -67,6 +67,8 @@ public class ShotQue : MonoBehaviour
                 {
                     //受け取ったjsonから国を抽出する
                     country = (string) parser["country"];
+                    //薩摩へこれを基準に判定してください！！！
+                    ip = (string) parser["ip"];
                     //country = "Russia";
                     Vector2 xy = util.GetPosition(country);
                     que.Add(xy);
