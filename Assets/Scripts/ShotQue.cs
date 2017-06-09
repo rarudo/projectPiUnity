@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class ShotQue : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class ShotQue : MonoBehaviour
         StartCoroutine("setQue");
     }
 
-    public void setJson(IList parsedJson)
+    public void addJson(IList parsedJson)
     {
         capsuleQue.Add(parsedJson);
     }
@@ -66,7 +67,7 @@ public class ShotQue : MonoBehaviour
                     薩摩画像になるようてい
                     Vector2 xy = getPosition("America");
                     */
-                    Vector2 xy = new Vector2(1,2);
+                    Vector2 xy = new Vector2(Random.Range(0,1000),Random.Range(0,1000));
                     que.Add(xy);
                 }
                 capsuleQue.RemoveAt(0);

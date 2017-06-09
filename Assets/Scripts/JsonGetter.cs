@@ -32,7 +32,7 @@ public class JsonGetter : MonoBehaviour
         if(www.text.Length != 0)
         {
             IList dataList= (IList)Json.Deserialize(www.text);
-            _shotQue.setJson(dataList);
+            _shotQue.addJson(dataList);
         }
     }
 }
