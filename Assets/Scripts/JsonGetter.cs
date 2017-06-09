@@ -25,7 +25,7 @@ public class JsonGetter : MonoBehaviour
         if (_shotQue.left > 20000)
             yield break;
         // サーバからJSON文字列取得
-        WWW www = new WWW ("http://172.16.119.1:5000/getTask");
+        WWW www = new WWW ("http://192.168.98.28:5000/getTask");
         yield return www;
         // クラスにデータを取得
         // JSONデータは最初は配列から始まるので、Deserialize（デコード）した直後にリストへキャスト

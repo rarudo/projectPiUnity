@@ -24,7 +24,10 @@ public class ShotQue : MonoBehaviour
     //1カプセルの中に、50個のqueが入ってる
     public List<IList> capsuleQue;
 
+    private Util util;
+
     void Start(){
+        util = GameObject.Find("Systems").GetComponent<Util>();
         //初期化
         left = 0;
         capsuleQue = new List<IList>();
@@ -44,7 +47,9 @@ public class ShotQue : MonoBehaviour
         {
             i = 50;
         }
+        //queからi個取得する
         List<Vector2> returnQue = que.GetRange(0, i);
+        //取り出した後queをi個削除する
         que.RemoveRange(0,i);
         return returnQue;
     }
@@ -56,18 +61,14 @@ public class ShotQue : MonoBehaviour
         {
             //1フレームごとにループする
             yield return new WaitForEndOfFrame();
-            
             if (capsuleQue.Count != 0)
             {
                 foreach (IDictionary parser in capsuleQue[0])
                 {
                     //受け取ったjsonから国を抽出する
                     country = (string) parser["country"];
-                    /*
-                    薩摩画像になるようてい
-                    Vector2 xy = getPosition("America");
-                    */
-                    Vector2 xy = new Vector2(Random.Range(0,1000),Random.Range(0,1000));
+                    //country = "Russia";
+                    Vector2 xy = util.GetPosition(country);
                     que.Add(xy);
                 }
                 capsuleQue.RemoveAt(0);

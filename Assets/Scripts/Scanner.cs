@@ -44,9 +44,10 @@ public class Scanner : MonoBehaviour {
         Vector2 st10;
         Vector2 lan10;
 
-        st10.x = start.x * 16.666666666666f + 500;
-        st10.y = start.y * 16.666666666666f + 1500;
-
+        // st10.x = start.x * 16.666666666666f + 500;
+        // st10.y = start.y * 16.666666666666f + 1500;
+        st10.x = start.x;
+        st10.y = start.y;
         lan10.x = landding.x * 16.666666666666f + 500;
         lan10.y = landding.y * 16.666666666666f + 1500;
 
