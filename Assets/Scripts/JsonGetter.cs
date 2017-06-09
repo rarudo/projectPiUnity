@@ -22,17 +22,29 @@ public class JsonGetter : MonoBehaviour
     IEnumerator setQues()
     {
         //すでにqueが溜まってたらスキップ
-        if (_shotQue.left > 20000)
-            yield break;
-        // サーバからJSON文字列取得
-        WWW www = new WWW ("http://192.168.98.28:5000/getTask");
-        yield return www;
-        // クラスにデータを取得
-        // JSONデータは最初は配列から始まるので、Deserialize（デコード）した直後にリストへキャスト
-        if(www.text.Length != 0)
-        {
-            IList dataList= (IList)Json.Deserialize(www.text);
-            _shotQue.addJson(dataList);
-        }
+        //if (_shotQue.left > 20000)
+        //    yield break;
+        //// サーバからJSON文字列取得
+        //WWW www = new WWW ("http://192.168.98.28:5000/getTask");
+        //yield return www;
+        //print(www.text);
+        //// クラスにデータを取得
+        //// JSONデータは最初は配列から始まるので、Deserialize（デコード）した直後にリストへキャスト
+        //if(www.text.Length != 0)
+        //{
+        //    IList dataList= (IList)Json.Deserialize(www.text);
+        //    _shotQue.addJson(dataList);
+        //}
+        
+        //以下デバッグ用！
+        int rand = Random.Range(1, 20);
+        //テスト用のjsonを作成
+      ////  string json = "{\"country\":\"America\",\"ip\":\"192.168.10." + rand + "\"}";
+        string json = "[{\"country\":\"England\",\"ip\":\"127.0.1.1\"}]";
+        print(json);
+        IList dataList= (IList)Json.Deserialize(json);
+        _shotQue.addJson(dataList);
+        //終了処理
+        yield break;
     }
 }
