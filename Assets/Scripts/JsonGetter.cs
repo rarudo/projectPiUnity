@@ -45,6 +45,5 @@ public class JsonGetter : MonoBehaviour
         //_shotQue.addJson(dataList);
         ////終了処理
         //yield break;
-        yield return new WaitForSeconds(1);
     }
 }
