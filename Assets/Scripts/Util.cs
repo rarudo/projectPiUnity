@@ -32,7 +32,7 @@ public class Util : MonoBehaviour {
 				case "Russia":
 					gobj = Russia;
 					break;
-				case "Australlia":
+				case "Australia":
 					gobj = Australia;
 					break;
 				case "Japan":
