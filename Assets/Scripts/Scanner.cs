@@ -67,7 +67,8 @@ public class Scanner : MonoBehaviour {
     void Tcp(int stX, int stY, int lanX, int lanY) {
         PaketControl paketControl_;
         //Debug.Log("tcp");
-        GameObject tcpPaket = GameObject.Instantiate(TcpPaket);
+        Vector3 pos = new Vector3(stX,0,stY);
+        GameObject tcpPaket = GameObject.Instantiate(TcpPaket,pos,new Quaternion());
         tcpPaket.transform.parent = PositionControl.transform;
         tcpPaket.name = "T:" + stX + ":" + stY + " to " + lanX + ":" + lanY ;
 

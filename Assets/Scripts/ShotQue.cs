@@ -26,7 +26,7 @@ public class ShotQue : MonoBehaviour
 
     private Util util;
 
-    void Start(){
+    void Awake(){
         util = GameObject.Find("Systems").GetComponent<Util>();
         //初期化
         left = 0;

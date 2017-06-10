@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Util : MonoBehaviour {
-	private GameObject America,England,China,Russia,Australlia;
+	private GameObject America,England,China,Russia,Australia,Japan;
 
 	// Use this for initialization
 	void Start () {
@@ -11,12 +11,13 @@ public class Util : MonoBehaviour {
 		England = GameObject.Find("England");
 		China = GameObject.Find("China");
 		Russia = GameObject.Find("Russia");
-		Australlia = GameObject.Find("Australlia");
+		Australia = GameObject.Find("Australia");
+		Japan = GameObject.Find("Japan");
 	}
 
 	public Vector2 GetPosition(string country)
 	{
-		GameObject gobj = America;
+		GameObject gobj = Japan;
 		switch (country)
 		{
 				case "America":
@@ -32,7 +33,10 @@ public class Util : MonoBehaviour {
 					gobj = Russia;
 					break;
 				case "Australlia":
-					gobj = Australlia;
+					gobj = Australia;
+					break;
+				case "Japan":
+					gobj = Japan;
 					break;
 		}
 		float width = gobj.transform.localScale.x;
