@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -26,7 +25,8 @@ public class ShotQue : MonoBehaviour
 
     private Util util;
 
-    void Start(){
+    void Awake(){
+		print ("Start");
         util = GameObject.Find("Systems").GetComponent<Util>();
         //初期化
         left = 0;
@@ -70,7 +70,7 @@ public class ShotQue : MonoBehaviour
                     //薩摩へこれを基準に判定してください！！！
                     ip = (string) parser["ip"];
                     //country = "Russia";
-                    Vector2 xy = util.GetPosition(country);
+                    Vector2 xy = util.GetPosition(country,ip);
                     que.Add(xy);
                 }
                 capsuleQue.RemoveAt(0);
