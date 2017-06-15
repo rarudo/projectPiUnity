@@ -22,8 +22,10 @@ public class JsonGetter : MonoBehaviour
     IEnumerator setQues()
     {
         //すでにqueが溜まってたらスキップ
-        if (_shotQue.left > 20000)
+        if (_shotQue.left > 20000){
+            print("queが20000以上");
             yield break;
+        }
         // サーバからJSON文字列取得
         WWW www = new WWW ("http://192.168.98.28:5000/getTask");
         yield return www;
@@ -35,6 +37,7 @@ public class JsonGetter : MonoBehaviour
             _shotQue.addJson(dataList);
         }
         
+        yield return new WaitForSeconds(0.5f);
         ////以下デバッグ用！
         //int rand = Random.Range(1, 20);
         ////テスト用のjsonを作成
