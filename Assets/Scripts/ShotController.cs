@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,12 +16,12 @@ public class ShotController : MonoBehaviour
 	void Start ()
 	{
         scanner = GetComponent<Scanner>();
-        GameObject dataObj,sliderObj;
+        GameObject dataObj;
         shotQue = GameObject.Find("Systems").GetComponent<ShotQue>();
 	    dataObj = GameObject.Find("DateText");
-	    sliderObj = GameObject.Find("ShotSpeedSlider");
+//	    sliderObj = GameObject.Find("ShotSpeedSlider");
 	    datText = dataObj.GetComponent<Text>();
-	    shotSpeedSlider = sliderObj.GetComponent<Slider>();
+//	    shotSpeedSlider = sliderObj.GetComponent<Slider>();
 	    StartCoroutine(Loop());
 	}
 

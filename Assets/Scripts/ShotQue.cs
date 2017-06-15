@@ -70,7 +70,7 @@ public class ShotQue : MonoBehaviour
                     //薩摩へこれを基準に判定してください！！！
                     ip = (string) parser["ip"];
                     //country = "Russia";
-                    Vector2 xy = util.GetPosition(country);
+                    Vector2 xy = util.GetPosition(country,ip);
                     que.Add(xy);
                 }
                 capsuleQue.RemoveAt(0);
